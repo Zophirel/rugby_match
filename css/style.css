@@ -8,22 +8,37 @@ main {
 
 #gradient {
     display: contents;
-    height: 300px;
+    height: 207px;
     width: 1024px;
     z-index: 2;
     background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(87,87,87,1) 20%, rgba(255,255,255,0) 50%, rgba(51,51,51,1) 80%, rgba(0,0,0,0.9) 100%);
 }
 
 .card {
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    height: 300px;
+    height: 207px;
     width: 1024px;
     background-color: black;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    background:  linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(105,47,142,1) 49%, rgba(106,17,104,1) 50%, rgba(0,79,240,1) 100%);
+    animation-name: cardAnimation;
+    animation-duration: 1s;
+    padding: 0 10px;
+}
+
+@keyframes cardAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 #cardHeader {
@@ -47,17 +62,345 @@ main {
     
 }
 
-#firstTeam {
-    width: 46.8%;
-    height: 300px;
-    background-image:  linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%),  url("../assets/img/red-background-1.png");
+#firstTeamInfo, #secondTeamInfo {
+    display: flex;
+    width: 100%;
+    height: 207px;
     z-index: 1;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#secondTeamInfo {
+    flex-direction: row-reverse;
+}
+
+#firstTeam {
+    position: relative;
+    width: 48%;
+    background-image: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%),  url("../assets/img/red-background-1.png");
+    animation-duration: 1s;
+    animation-name: firstTeamAnimation;
+}
+
+@keyframes firstTeamAnimation {
+    0% {
+        width: 48.5%;
+    }
+
+    100% {
+        width: 48;
+    }
+}
+
+#firstTeamIcon {
+    position: relative;
+    height: 123px;
+    min-width: 100%;
+    animation-name: firstTeamIconAnimation;
+    animation-duration: 2s;
+    
+}
+
+@keyframes firstTeamIconAnimation {
+    0%   {opacity: 0; right: 70px;}
+    25%  {opacity: 1;}
+    100% {opacity: 1; right: 0px;}
+  }
+
+#firstTeamName, #secondTeamName {
+    position: relative;
+    color: white;
+    font-weight: bold;
+    font-family: 'Open Sans';
+    font-size: 2em;
+}
+
+#firstTeamName{
+    animation-name: firstTeamNameAnimation;
+    animation-duration: 1s;
+}
+
+@keyframes firstTeamNameAnimation {
+    0% {
+        right: 20px;
+    }
+
+    100% {
+        right: 0px;
+    }
 }
 
 #secondTeam {
-    width: 46.8%;
-    height: 300px;
-    background-image: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%), url("../assets/img/blue-background-2.png");
-    z-index: 1;   
+    width: 48%;
+    flex-direction: row-reverse;
+    background-image: linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%), url("../assets/img/blue-background-2.png");
 }
 
+#secondTeamIcon{
+    position: relative;
+    height: 123px;
+    min-width: 100%;
+    animation-name: secondTeamIconAnimation;
+    animation-duration: 2s
+}
+
+@keyframes secondTeamIconAnimation {
+    0%   {opacity: 0; left: 40px;}
+    100% {opacity: 1; left: 0px;}
+}
+
+#secondTeamName{
+    animation-name: secondTeamNameAnimation;
+    animation-duration: 1s;
+}
+
+@keyframes secondTeamNameAnimation {
+    0% {
+        left: 20px;
+    }
+
+    100% {
+        left: 0px;
+    }
+}
+
+.firstTeamPoints {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: 80px;
+    border-bottom-left-radius: 10px;
+    background-color: white;
+}
+
+.secondTeamPoints {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: 80px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+}
+
+.firstTeamPoints > h1, .secondTeamPoints > h1 {
+    position: relative;
+    color: black;
+    font-weight: bold;
+    font-family: 'Open Sans';
+    font-size: 60px;
+    animation-name: pointsAnimation;
+    animation-duration: 1s;
+}
+
+@keyframes pointsAnimation {
+    0%   {opacity: 0; top: 20px;}
+    100% {opacity: 1; top: 0px;}
+}
+
+.stadium {
+    top: 170px;
+    position: absolute;
+    color: white;
+    z-index: 3;
+    font-family: 'Open Sans';
+    font-weight: bold;
+}
+
+.league{
+    position: absolute;
+    top: 260px;
+    height: 35px;
+    z-index: 3;
+}
+
+.position{
+    position: relative;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.position > p {
+    display: inline;
+    margin: 0;
+    font-size: 30px;
+    font-family: 'Open Sans';
+    font-weight: bold;
+}
+
+.position > span {
+    position: relative;
+    top: -3px;
+    font-family: 'Open Sans';
+    font-weight: bold;
+}
+
+.mobileElments {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    justify-content: end;
+    align-items: end;
+    margin-right: 10px;
+    margin-left: 10px;
+    position: relative; 
+}
+
+.mobileElments > #firstTeamName {
+    display: none;
+}
+
+.mobileElments > #secondTeamName{
+    display: none;
+}
+
+.mobileElments > .position {
+    display: none;
+}
+
+.league {
+    display: none;
+}
+
+
+@media screen and (max-width: 1024px){
+    .card {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        height: 236px;
+        width: 768px;
+        background-color: black;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+       
+        animation-name: cardAnimation;
+        animation-duration: 1s;
+    }
+
+    .firstTeamPoints {
+        height: 64px;
+        width: 64px;
+        float: right;
+    }
+
+    .secondTeamPoints {
+        height: 64px;
+        width: 64px;
+        float: left;
+    }
+
+    .firstTeamPoints > h1, .secondTeamPoints > h1 {
+        font-size: 40px
+    }
+
+    .stadium {
+        top: 195px;
+    }
+
+    .league {
+        display: none;
+    }
+
+    #firstTeamIcon{
+        height: 80px;
+        position: relative;
+        bottom: 25px;
+    }
+
+    #firstTeamName {
+        margin: 5px 0 0 0;
+        display: none;
+    }
+
+    #secondTeamInfo > #secondTeamName {
+        display: none;
+    }
+
+    #secondTeamIcon{
+        height: 80px;
+    bottom: 25px;
+    }
+
+    .position {
+        display: none;
+    }
+
+    #mobile > span {
+       font-size: 10px;
+    }
+
+    #mobile > p {
+        margin-left: 3px;
+        margin-right: 3px;
+        font-size: 20px;
+    }
+
+    .mobileElments {
+        display: flex;
+        flex-direction: column;
+        text-align: end;
+        justify-content: end;
+        align-items: end;
+        margin-right: 10px;
+        margin-left: 10px;
+        position: relative;
+    }
+
+    #secondTeamInfo > .mobileElments {
+        display: flex;
+        flex-direction: column;
+        text-align: start;
+        justify-content: start;
+        align-items: start;
+        margin-right: 10px;
+        margin-left: 10px;
+        position: relative;
+           
+    }
+
+
+    .mobileElments > #firstTeamName{
+        display: block;
+    }
+    .mobileElments > #secondTeamName{
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+
+    #mobile {
+        display: unset;
+    }
+}
+
+
+@media screen and (max-width: 640px){
+ #firstTeamInfo, #secondTeamInfo{
+    flex-wrap: wrap;
+ }   
+ #firstTeamIcon, #secondTeamIcon{
+    top: 10px;
+    bottom: 0;
+ }   
+
+ .mobileElments {
+    width: 100%;    
+}
+
+    #firstTeamName, #secondTeamName {
+        font-size: 1em;
+    }
+}
