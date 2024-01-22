@@ -2,8 +2,16 @@
 
 main {
     display: flex;
-    align-content: center;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date {
+    margin: 20px 0;
+    font-weight: bold;
+    font-family: "Open Sans";
+    
 }
 
 #gradient {
@@ -15,7 +23,6 @@ main {
 }
 
 .card {
-
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -58,14 +65,13 @@ main {
 #cardHeader > span {
     font-family: 'Open Sans';
     font-weight: bold;
-    color: white;
-    
+    color: white;   
 }
 
 #firstTeamInfo, #secondTeamInfo {
     display: flex;
     width: 100%;
-    height: 207px;
+    height: 175px;
     z-index: 1;
     flex-wrap: nowrap;
     align-content: center;
@@ -101,6 +107,7 @@ main {
     min-width: 100%;
     animation-name: firstTeamIconAnimation;
     animation-duration: 2s;
+    transition: transform 0.5s;
     
 }
 
@@ -108,7 +115,30 @@ main {
     0%   {opacity: 0; right: 70px;}
     25%  {opacity: 1;}
     100% {opacity: 1; right: 0px;}
-  }
+}
+
+.card:hover #firstTeamIcon {
+    transform: scale(1.2);  
+}
+
+#secondTeamIcon{
+    position: relative;
+    height: 123px;
+    min-width: 100%;
+    animation-name: secondTeamIconAnimation;
+    animation-duration: 2s;
+    transition: transform 0.5s;
+}
+
+@keyframes secondTeamIconAnimation {
+    0%   {opacity: 0; left: 40px;}
+    25%  {opacity: 1;}
+    100% {opacity: 1; left: 0px;}
+}
+
+.card:hover #secondTeamIcon{
+    transform: scale(1.2);
+}
 
 #firstTeamName, #secondTeamName {
     position: relative;
@@ -121,16 +151,33 @@ main {
 #firstTeamName{
     animation-name: firstTeamNameAnimation;
     animation-duration: 1s;
+    right: 0;
+    transition: right 0.5s;
 }
 
 @keyframes firstTeamNameAnimation {
-    0% {
-        right: 20px;
-    }
+    0% {right: 20px;}
+    100% {right: 0px;}
+}
 
-    100% {
-        right: 0px;
-    }
+.card:hover #firstTeamName {
+    right: 5px;  
+}
+
+#secondTeamName{
+    animation-name: secondTeamNameAnimation;
+    animation-duration: 1s;
+    left: 0;
+    transition: left 0.5s;
+}
+
+@keyframes secondTeamNameAnimation {
+    0% {left: 20px;}
+    100% {left: 0px;}
+}
+
+.card:hover #secondTeamName {
+    left: 5px;  
 }
 
 #secondTeam {
@@ -139,33 +186,6 @@ main {
     background-image: linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%), url("../assets/img/blue-background-2.png");
 }
 
-#secondTeamIcon{
-    position: relative;
-    height: 123px;
-    min-width: 100%;
-    animation-name: secondTeamIconAnimation;
-    animation-duration: 2s
-}
-
-@keyframes secondTeamIconAnimation {
-    0%   {opacity: 0; left: 40px;}
-    100% {opacity: 1; left: 0px;}
-}
-
-#secondTeamName{
-    animation-name: secondTeamNameAnimation;
-    animation-duration: 1s;
-}
-
-@keyframes secondTeamNameAnimation {
-    0% {
-        left: 20px;
-    }
-
-    100% {
-        left: 0px;
-    }
-}
 
 .firstTeamPoints {
     display: flex;
@@ -203,12 +223,13 @@ main {
 }
 
 .stadium {
-    top: 170px;
-    position: absolute;
+    left: -85px;
+    position: relative;
     color: white;
     z-index: 3;
     font-family: 'Open Sans';
     font-weight: bold;
+    margin: 0;
 }
 
 .league{
@@ -285,7 +306,6 @@ main {
         background-color: black;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
-       
         animation-name: cardAnimation;
         animation-duration: 1s;
     }
@@ -306,9 +326,6 @@ main {
         font-size: 40px
     }
 
-    .stadium {
-        top: 195px;
-    }
 
     .league {
         display: none;
@@ -359,6 +376,10 @@ main {
         position: relative;
     }
 
+    #firstTeamInfo, #secondTeamInfo{
+        height: 208px;
+    }
+
     #secondTeamInfo > .mobileElments {
         display: flex;
         flex-direction: column;
@@ -384,23 +405,30 @@ main {
     #mobile {
         display: unset;
     }
+    .card {
+        width: 87vw;
+    }
+    
 }
 
 
 @media screen and (max-width: 640px){
- #firstTeamInfo, #secondTeamInfo{
-    flex-wrap: wrap;
- }   
- #firstTeamIcon, #secondTeamIcon{
-    top: 10px;
-    bottom: 0;
- }   
-
- .mobileElments {
-    width: 100%;    
-}
-
+    #firstTeamInfo, #secondTeamInfo{
+        flex-wrap: wrap;
+    }   
+    #firstTeamIcon, #secondTeamIcon{
+        top: 10px;
+        bottom: 0;
+    }   
+    .mobileElments {
+        width: 100%;    
+    }
     #firstTeamName, #secondTeamName {
         font-size: 1em;
     }
+
+    .stadium{
+        white-space: nowrap;
+    }
+
 }
