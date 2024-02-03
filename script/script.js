@@ -23,8 +23,37 @@
             let card = document.createElement("div");
             let firstTeam = allRugbyMatches.data[i].matches[j].teams[0];
             let secondTeam = allRugbyMatches.data[i].matches[j].teams[1];
-            console.log(firstTeam.logo);
-            console.log(secondTeam.logo);
+            let firstTeamName = `<span id = "firstTeamName">${firstTeam.name.toUpperCase()}</span>`;
+            let secondTeamName = `<span id = "secondTeamName">${secondTeam.name.toUpperCase()}</span>`;
+            
+            let firstNameWordNumber = firstTeam.name.split(' ').length;
+            let secondNameWordNumber = secondTeam.name.split(' ').length;
+
+            
+            if(firstNameWordNumber > 1 || secondNameWordNumber > 1){
+                if(firstNameWordNumber > 1){
+                    firstTeamName = 
+                    `<span id = "firstTeamName">${firstTeam.name.split(' ')[0].toUpperCase()}</span>
+                    <span id = "firstTeamName">${firstTeam.name.split(' ')[1].toUpperCase()}</span>`;
+                }else{
+                    firstTeamName = `
+                    <span id = "firstTeamName">${firstTeam.name.split(' ')[0].toUpperCase()}</span>;
+                    <span class = "whitespace"></span>`
+                }
+
+                if(secondTeam.name.split(' ').length > 1){
+                    secondTeamName = 
+                    `<span id = "secondTeamName">${secondTeam.name.split(' ')[1].toUpperCase()}</span>
+                    <span id = "secondTeamName">${secondTeam.name.split(' ')[0].toUpperCase()}</span>`;
+                }else{
+                    secondTeamName = 
+                    `<span id = "secondTeamName" class = "whitespace"></span>
+                    <span id = "secondTeamName">${secondTeam.name.split(' ')[0].toUpperCase()}</span>`;
+                }
+            }
+
+          
+
             card.className = "card";
             card.style.background = `linear-gradient(90deg, rgba(${firstTeam.color},1) 0%, rgba(105,47,142,1) 49%, rgba(106,17,104,1) 50%, rgba(${secondTeam.color},1) 100%)`;
             card.innerHTML = 
@@ -40,47 +69,51 @@
                             <span>${firstTeam.conference}</span><p>${firstTeam.position}</p>
                         </div>
                     </div>
-                    <span id = "firstTeamName">${firstTeam.name.toUpperCase()}</span>
+                    ${firstTeamName}
                     <div class="mobileElments">
                         <div class="firstTeamPoints">
                             <h1>${firstTeam.score}</h1>
                         </div>
-                        <p id = "firstTeamName">${firstTeam.name}</p>
-                        <div  id="mobile" class="position">
+                        ${firstTeamName}
+                        <div id="mobile" class="position">
                             <span>${firstTeam.conference}</span><p>${firstTeam.position}</p>
                         </div>
                     </div>  
-                
                 </div>
             </div>
 
             <img src="assets/img/united-rugby-copy.png" class="league">
+
             <div id="secondTeam">
                 <div id="secondTeamInfo">
                     <div class="team">
                         <img src="assets/img/${secondTeam.logo}" id="secondTeamIcon"></img>
                         <div class="position">
-                            <p>${secondTeam.position}</p><span>${secondTeam.conference}</span>
+                           <p>${secondTeam.position}</p> <span>${secondTeam.conference}</span>
                         </div>
                     </div>
-                    <span id = "secondTeamName">EMIRATES</span>
-                    <div class="mobileElments">
+                ${secondTeamName}
+                 
+                <div class="mobileElments">
+
+                    <div id="mobile" class="position">
+                    <p>${secondTeam.position}</p><span>${secondTeam.conference}</span>
+                    </div>
+                        ${secondTeamName}
                         <div class="secondTeamPoints">
                             <h1>${secondTeam.score}</h1>
                         </div>
-                        <p id = "secondTeamName">${secondTeam.name.toUpperCase()}</p>
-                        <div  id="mobile" class="position">
-                            <p>${secondTeam.position}</p><span>${secondTeam.conference}</span>
-                        </div>
-                    </div>   
+                    </div>  
                 </div>
-                <p class="stadium">${allRugbyMatches.data[i].matches[j].place}</p>       
+            </div>
+
+            <p class="stadium">${allRugbyMatches.data[i].matches[j].place.toUpperCase()}</p>       
             </div>  
             `
 
            console.log(card.children);
             card.children[1].style.background = `linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%),  url("../assets/img/${firstTeam.themeImage}.png")`;
-            card.children[3].style.background = `linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%),  url("../assets/img/${secondTeam.themeImage}.png")`;
+            card.children[3].style.background = `linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%),  url("../assets/img/${secondTeam.themeImage}.png")`;
             main[0].append(card);
         }
     }

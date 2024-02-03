@@ -146,7 +146,8 @@ main {
     color: white;
     font-weight: bold;
     font-family: 'Open Sans';
-    font-size: 2em;
+    font-size: 1.5em;
+    line-height: 0.7;
 }
 
 #firstTeamName{
@@ -224,13 +225,13 @@ main {
 }
 
 .stadium {
-    left: -85px;
-    position: relative;
+    position: absolute;
     color: white;
     z-index: 3;
     font-family: 'Open Sans';
     font-weight: bold;
     margin: 0;
+    margin-top: 175px;
 }
 
 .league{
@@ -295,6 +296,11 @@ main {
     display: none;
 }
 
+span#secondTeamName.whitespace span#firstTeamName.whitespace{
+    display: none;
+    margin-top: 5px;
+}
+
 
 @media screen and (max-width: 1024px){
     .card {
@@ -342,6 +348,7 @@ main {
     #firstTeamName {
         margin: 5px 0 0 0;
         display: none;
+        white-space: pre-line;
     }
 
     #secondTeamInfo > #secondTeamName {
@@ -376,6 +383,7 @@ main {
         margin-right: 10px;
         margin-left: 10px;
         position: relative;
+    
     }
 
     #firstTeamInfo, #secondTeamInfo{
@@ -384,16 +392,14 @@ main {
 
     #secondTeamInfo > .mobileElments {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: start;
         justify-content: start;
         align-items: start;
         margin-right: 10px;
         margin-left: 10px;
         position: relative;
-           
     }
-
 
     .mobileElments > #firstTeamName{
         display: block;
@@ -409,6 +415,15 @@ main {
     }
     .card {
         width: 87vw;
+    }
+
+    .stadium{
+       margin-top: 200px;
+    }
+
+    span#secondTeamName.whitespace {
+        display: unset;
+        margin-top: 22px;
     }
     
 }
@@ -431,6 +446,13 @@ main {
 
     .stadium{
         white-space: nowrap;
+        margin-top: 210px;
     }
+
+    span#secondTeamName.whitespace {
+        display: unset;
+        margin-top: 16px;
+    }
+    
 
 }
