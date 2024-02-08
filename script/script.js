@@ -14,12 +14,8 @@
         date.className = "date";
         date.innerHTML = allRugbyMatches.data[i].date.toUpperCase();
         main[0].append(date);
-
-        console.log(allRugbyMatches.data[i].matches);
         
         for(j = 0; j < allRugbyMatches.data[i].matches.length; j++){
-            console.log("match");
-            console.log(allRugbyMatches.data[i].matches);
             let card = document.createElement("div");
             let firstTeam = allRugbyMatches.data[i].matches[j].teams[0];
             let secondTeam = allRugbyMatches.data[i].matches[j].teams[1];
@@ -51,8 +47,6 @@
                     <span id = "secondTeamName">${secondTeam.name.split(' ')[0].toUpperCase()}</span>`;
                 }
             }
-
-          
 
             card.className = "card";
             card.style.background = `linear-gradient(90deg, rgba(${firstTeam.color},1) 0%, rgba(105,47,142,1) 49%, rgba(106,17,104,1) 50%, rgba(${secondTeam.color},1) 100%)`;
@@ -111,7 +105,6 @@
             </div>  
             `
 
-           console.log(card.children);
             card.children[1].style.background = `linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%),  url("../assets/img/${firstTeam.themeImage}.png")`;
             card.children[3].style.background = `linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%),  url("../assets/img/${secondTeam.themeImage}.png")`;
             main[0].append(card);
